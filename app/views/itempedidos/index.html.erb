@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Itempedidos</h1>
+
+<div id="itempedidos">
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th scope="col">QTD</th>
+    <th scope="col">Produto</th>
+    <th scope="col">Cliente</th>
+    <th scope="col">Status</th>
+    <th scope="col">Ações</th>
+  </tr>
+</thead>
+<tbody>
+  <% @itempedidos.each do |itempedido| %>
+
+    <%= render 'itempedidoa', itempedido: itempedido %>
+
+  <% end %>
+<tbody>
+</table>
+
+</div>
+
+<%= link_to "New itempedido", new_itempedido_path %>

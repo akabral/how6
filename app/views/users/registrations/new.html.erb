@@ -1,0 +1,70 @@
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="/how6/bootstrap-5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="d-flex align-items-center justify-content-center m-0" style="background-color: rgb(165, 200, 222);">
+    <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4" style="max-width: 440px;">
+        <div class="bg-light rounded p-4 p-sm-5 my-4 mx-2 shadow">
+          <div class="mb-3">
+              <h3>Sign up</h3>
+          </div>
+
+          <%= form_for(@user, as: @user, url: user_registration_path(@user)) do |f| %>
+            <div class="row">
+              <div class="field col-sm-8">
+                <%= f.label :email, class: "form-label"%>
+                <%= f.email_field :email, class: "form-control #{'is-invalid' if f.object.errors[:email].any?}", autocomplete: "email" %>
+                <% if f.object.errors[:email].any? %>
+                  <div class="invalid-feedback d-block">
+                    <%= f.object.errors[:email].join(', ') %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="field col-sm-4">
+                <%= f.label :role, "Role", class: "form-label" %><br>
+                <%= f.select :role, options_for_select(User::ROLES.map.with_index { |r, idx| [ r,  idx] }, 1), {}, class: 'form-control form-select' %>
+              </div>
+            </div>
+            
+            <div class="field mt-3">
+              <%= f.label :password, class: "form-label"%>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, class: "form-control #{'is-invalid' if f.object.errors[:password].any?}", autocomplete: "new-password" %>
+              <% if f.object.errors[:password].any? %>
+                <div class="invalid-feedback d-block">
+                  <%= f.object.errors[:password].join(', ') %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="field mt-3">
+              <%= f.label :password_confirmation, class: "form-label"%>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password_confirmation, class: "form-control #{'is-invalid' if f.object.errors[:password_confirmation].any?}", autocomplete: "new-password" %>
+              <% if f.object.errors[:password_confirmation].any? %>
+                <div class="invalid-feedback d-block">
+                  <%= f.object.errors[:password_confirmation].join(', ') %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Sign up", class: "btn btn-primary py-3 w-100 mt-3 mb-3" %>
+            </div>
+
+          <% end %>
+
+          <p class="text-center mb-0">Already have an Account? <%= render "users/shared/links" %></p>
+        </div>
+    </div>
+  </div>
+</body>
+
+<script src="/how6/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<%#= render "users/shared/links" %>

@@ -1,0 +1,70 @@
+<%= form_with(model: pedido) do |form| %>
+  <% if pedido.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
+
+      <ul>
+        <% pedido.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :date_validade, style: "display: block" %>
+    <%= form.date_field :date_validade %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, options_for_select(Pedido::STATUS.map.with_index { |r, idx| [ r,  idx] }, 1), {}, class: 'form-control form-select' %>
+
+  </div>
+
+
+  
+  <div class="row">
+  <hr>
+
+  <div id="itempedidos" class="nested-fields-container">
+    <%= form.fields_for :itempedidos do |itempedido|%>
+      <div class="nested-fields">
+        <%= render 'itempedido_fields', f: itempedido %>
+      </div>
+    <%end%>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="links">
+  <br />
+    <%= link_to_add_fields 'Adicionar Item', form, :itempedidos, '#itempedidos' %>
+  </div>
+  <br />
+</div>
+
+
+
+  <div>
+  <br />
+    <%= form.label :deleted_at, style: "display: block" %>
+    <%= form.datetime_field :deleted_at %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

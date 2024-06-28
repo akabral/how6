@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pedidos</h1>
+
+
+<div id="pedidos">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Data</th>
+        <th scope="col">Data Validade</th>
+        <th scope="col">Status</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pedidos.each do |pedido| %>
+
+        <%= render 'pedidoa', pedido: pedido %>
+
+      <% end %>
+    <tbody>
+  </table>
+</div>
+
+
+
+<%= link_to "New pedido", new_pedido_path %>

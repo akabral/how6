@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pedido %>
+
+<div>
+  <%= link_to "Editar", edit_pedido_path(@pedido) %> |
+  <%= link_to "Voltar", pedidos_path %>
+  <%= button_to "Apagar", @pedido, method: :delete %>
+</div>

@@ -1,0 +1,13 @@
+<% options ||= {} %>
+<% options[:class] = "form-check #{'is-invalid' if f.object.errors[attribute].any?} #{custom_class if local_assigns[:custom_class] }" %>
+
+<div class="field col">
+    <%= f.label attribute, class: "form-label d-block" %>
+    
+    <% collection.each do |k, v| %>
+        <div class="<%= options[:class]%>">
+            <%= f.radio_button attribute, v, class: "form-check-input", checked: k == collection[0][0] %>
+            <%= f.label "#{attribute}_#{v}", v, class: "form-check-label" %>
+        </div>
+    <% end %>
+</div>

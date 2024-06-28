@@ -1,0 +1,55 @@
+<head></head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="/how6/bootstrap-5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="d-flex align-items-center justify-content-center m-0" style="background-color: rgb(165, 200, 222);">
+    <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4" style="max-width: 440px;">
+        <div class="bg-light rounded p-4 p-sm-5 my-4 mx-2 shadow">
+          <div class="mb-3">
+              <h3>Bem Vindo</h3>
+          </div>
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email, class: "form-label"%>
+              <%= f.email_field :email, class: "form-control #{'is-invalid' if f.object.errors[:email].any?}", autocomplete: "email" %>
+              <% if f.object.errors[:email].any? %>
+                <div class="invalid-feedback d-block">
+                  <%= f.object.errors[:email].join(', ') %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="field mt-3">
+              <%= f.label :password, class: "form-label"%>
+              <%= f.password_field :password, class: "form-control #{'is-invalid' if f.object.errors[:password].any?}", autocomplete: "current-password" %>
+              <% if f.object.errors[:password].any? %>
+                <div class="invalid-feedback d-block">
+                  <%= f.object.errors[:password].join(', ') %>
+                </div>
+              <% end %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="field mt-3 form-check">
+                
+                <%= f.check_box :remember_me, class: "form-control form-check-input" %>
+                <%= f.label :remember_me, class: "form-label", style: "margin-left: 5px;" %>
+              </div>
+            <% end %>
+
+            <div class="actions">
+              <%= f.submit "Entrar", class: "btn btn-primary py-3 w-100 mt-3 mb-3" %>
+            </div>
+
+          <% end %>
+
+          <p class="text-center mb-0">Não possui usuário? <%= render "users/shared/links" %></p>
+        </div>
+    </div>
+  </div>
+</body>
+
+<script src="/how6/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>

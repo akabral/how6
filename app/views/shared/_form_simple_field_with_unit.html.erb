@@ -1,0 +1,19 @@
+<% options ||= {} %>
+<% options[:class] = "form-control #{'is-invalid' if f.object.errors[attribute].any?} #{custom_class if local_assigns[:custom_class] }" %>
+
+<div class="field col">
+    <%= f.label attribute, class: "form-label" %>
+    <div class="input-group">
+        <%= f.send(field_type, attribute, options) %>
+        
+        <% if f.object.errors[attribute].any? %>
+            <div class="invalid-feedback d-block">
+                <%= f.object.errors[attribute].join(', ') %>
+            </div>
+        <% end %>
+
+        <div class="input-group-append">
+          <span class="input-group-text" id="transparency-unit"><%= unit %></span>
+        </div>
+    </div>
+</div>

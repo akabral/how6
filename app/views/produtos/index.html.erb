@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Produtos</h1>
+
+<div id="produtos">
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th scope="col">Nome</th>
+    <th scope="col">Valor</th>
+    <th scope="col">Ações</th>
+  </tr>
+</thead>
+<tbody>
+  <% @produtos.each do |produto| %>
+
+    <%= render 'produtoa', produto: produto %>
+
+  <% end %>
+<tbody>
+</table>
+
+</div>
+
+<%= link_to "New produto", new_produto_path %>

@@ -1,0 +1,23 @@
+<tr id="<%= dom_id itempedido %>">
+  <th>
+    <%= itempedido.valor %>
+  </th>
+
+  <th>
+    <%= itempedido.produto.name%>
+  </th>
+
+  <th>
+    <%= itempedido.pedido.name%>
+  </th>
+
+  <th>
+    <%= Pedido::STATUS[itempedido.pedido.status]%>
+  </th>
+
+  <th>
+    <%= link_to "Show this itempedido", itempedido %>
+  </thp>
+
+
+</tr>

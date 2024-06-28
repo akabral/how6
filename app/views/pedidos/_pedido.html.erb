@@ -1,0 +1,45 @@
+<div id="<%= dom_id pedido %>">
+  <p>
+    <strong>Name:</strong>
+    <%= pedido.name %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= pedido.date %>
+  </p>
+
+  <p>
+    <strong>Date validade:</strong>
+    <%= pedido.date_validade %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= Pedido::STATUS[pedido.status]%>
+
+  </p>
+
+  <div id="pedidos">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Produto</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pedido.itempedidos.each do |itempedido| %>
+
+        <tr>
+        <th scope="col"><%=itempedido.produto.name%></th>
+        <th scope="col"><%=itempedido.valor%></th>
+        </tr>
+
+      <% end %>
+    <tbody>
+  </table>
+</div>
+
+
+</div>

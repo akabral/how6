@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @itempedido %>
+
+<div>
+  <%= link_to "Edit this itempedido", edit_itempedido_path(@itempedido) %> |
+  <%= link_to "Back to itempedidos", itempedidos_path %>
+
+  <%= button_to "Destroy this itempedido", @itempedido, method: :delete %>
+</div>

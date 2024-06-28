@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>how6</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    
+    <link href="/how6/bootstrap-5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="/how6/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <% if user_signed_in? %>
+  <div> Welcome <%= current_user.email %> </div> 
+  <%= link_to "Sair", destroy_user_session_path, method: :delete, data:{turbo_method: :delete} %>
+  <%= link_to "edit re", edit_user_registration_path%>
+  <%else%>
+  <%= link_to "Sign up ", new_user_registration_path%>
+  <%= link_to "Sign in ", new_user_session_path%>
+
+
+  <%end%>
+
+
+    <%= yield %>
+  </body>
+</html>
